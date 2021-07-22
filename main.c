@@ -24,7 +24,7 @@ int main(int argc, char *argv[]){
 
 void create_list(int x, char y[]) {
 
-	FILE * fpointer = fopen("hello.txt", "a");
+	FILE * fpointer = fopen(y, "a");
 
 	for (int i = 1; i <= x; ++i) {
 		fprintf(fpointer, "%s\n", y);
