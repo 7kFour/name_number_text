@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 
+void create_file(char y[]);
 void create_list(int x, char y[]);
 
 int main(int argc, char *argv[]){
@@ -11,23 +12,33 @@ int main(int argc, char *argv[]){
 	int list_lines;
 
 	printf("Enter list variable name: ");
-	/* you don't need to add & when taking string input from a user*/
+	/* you don't need & when taking a string*/
 	scanf("%s", list_name);
 
 	printf("Enter number of list items: ");
 	scanf("%d", &list_lines);
 
+	create_file(list_name);
 	create_list(list_lines, list_name);
 
 	return 0;
+}
+
+void create_file(char y[]) {
+
+	FILE * fpointer = fopen(y, "w");
+
+	fclose(fpointer);
 }
 
 void create_list(int x, char y[]) {
 
 	FILE * fpointer = fopen(y, "a");
 
+	fprintf(fpointer, "%s = [\n", y);
+
 	for (int i = 1; i <= x; ++i) {
-		fprintf(fpointer, "%s\n", y);
+		fprintf(fpointer, "[\"\",\n[\"\",\"\"],\n[]],\n\n");
 	}
 
 	fclose(fpointer);
